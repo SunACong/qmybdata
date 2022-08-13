@@ -1,0 +1,37 @@
+server:
+  port: 9527
+
+
+spring:
+  datasource:
+    name: qmybdata
+    url: jdbc:mysql://localhost:3307/qmy_sheep?serverTimezone=UTC
+#    url: jdbc:mysql://localhost:3306/ry-vue?serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+    encoding: UTF-8
+
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: classpath:static/**,classpath:template/**
+  freemarker:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.qmy.qmybdata.entity
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

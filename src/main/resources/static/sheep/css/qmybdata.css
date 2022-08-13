@@ -1,0 +1,33 @@
+body{
+    background-image: url(../img/bigback1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.index_nav ul li{
+    background-image: url(../img/todayback.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.choose_quyu{
+    margin-left: 0px;
+    float: right;
+    width: 100%;
+    height:30%;
+}
+.topregion{
+    float:left;
+    width:20%;
+    height:100%;
+    background-image: url(../img/region.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.totalback{
+    margin-left:2%;
+    float:left;
+    width:6%;
+    height:100%;
+    background-image: url(../img/totalback.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%
+}

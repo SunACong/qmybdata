@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" style="height:100%;width:100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>mainpage</title>
+    <link href="/static/sheep/css/BigData.css" th:href="@{/sheep/css/BigData.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index.css" th:href="@{/sheep/css/index.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index01.css" th:href="@{/sheep/css/index01.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/dealpage.css" th:href="@{/sheep/css/dealpage.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/bootstrap-table.css" th:href="@{/sheep/css/bootstrap-table.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/Security_operation.css" th:href="@{/sheep/css/Security_operation.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/default.css" th:href="@{/sheep/css/default.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/style.css" th:href="@{/sheep/css/style.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/trace.css" th:href="@{/sheep/css/trace.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/dialog.css" th:href="@{/sheep/css/dialog.css}" rel="stylesheet"  />
+
+    <script src="/sheep/js/base.js" th:src="@{/sheep/js/base.js}"></script>
+    <script src="/sheep/js/jquery.js" th:src="@{/sheep/js/jquery.js}"></script>
+    <script src="/sheep/js/dealpage.js" th:src="@{/sheep/js/dealpage.js}"></script>
+    <script src="/sheep/js/time.js" th:src="@{/sheep/js/time.js}"></script>
+    <script src="/sheep/js/dialog.js" th:src="@{/sheep/js/dialog.js}"></script>
+    <script src="/sheep/js/echarts.min.js" th:src="@{/sheep/js/echarts.min.js}"></script>
+    <script src="/sheep/js/jquery-ui-1.10.0.custom.min.js" th:src="@{/sheep/js/jquery-ui-1.10.0.custom.min.js}"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+            $("#muchanginfo").click(function () {
+                $(this).removeClass("noactivate").addClass("activate");
+                $("#tuzaiinfo").removeClass("activate").addClass("noactivate");
+                $("#zhongduaninfo").removeClass("activate").addClass("noactivate");
+            });
+
+            $("#tuzaiinfo").click(function () {
+                $(this).removeClass("noactivate").addClass("activate");
+                $("#muchanginfo").removeClass("activate").addClass("noactivate");
+                $("#zhongduaninfo").removeClass("activate").addClass("noactivate");
+            });
+
+            $("#zhongduaninfo").click(function () {
+                $(this).removeClass("noactivate").addClass("activate");
+                $("#muchanginfo").removeClass("activate").addClass("noactivate");
+                $("#tuzaiinfo").removeClass("activate").addClass("noactivate");
+            });
+
+            $("#shujuzhongxin").click(function () {
+                $(this).removeClass("headnoactivate").addClass("headactivate");
+                $("#zhinengyangzhi").removeClass("headactivate").addClass("headnoactivate");
+                $("#zhuanjiafuwu").removeClass("headactivate").addClass("headnoactivate");
+            });
+
+            $("#zhinengyangzhi").click(function () {
+                $(this).removeClass("headnoactivate").addClass("headactivate");
+                $("#shujuzhongxin").removeClass("headactivate").addClass("headnoactivate");
+                $("#zhuanjiafuwu").removeClass("headactivate").addClass("headnoactivate");
+            });
+
+            $("#zhuanjiafuwu").click(function () {
+                $(this).removeClass("headnoactivate").addClass("headactivate");
+                $("#zhinengyangzhi").removeClass("headactivate").addClass("headnoactivate");
+                $("#shujuzhongxin").removeClass("headactivate").addClass("headnoactivate");
+            });
+
+            //养殖端按下需要进行的操作
+            $("#yangzhiduan").click(function () {
+                $(this).removeClass("noweight").addClass("weight");
+                $("#zhongduan").removeClass("weight");
+                $("#jiagongduan").removeClass("weight");
+                $("#gongyingduan").removeClass("weight");
+                $("#ditu").css("background-image", "url(/sheep/img/ditu-yangzhiduan.jpg)")
+            });
+
+            //终端按下需要进行的操作
+            $("#zhongduan").click(function () {
+                $(this).removeClass("noweight").addClass("weight");
+                $("#yangzhiduan").removeClass("weight");
+                $("#jiagongduan").removeClass("weight");
+                $("#gongyingduan").removeClass("weight");
+                $("#ditu").css("background-image", "url(/sheep/img/ditu-zhongduan.jpg)")
+            });
+
+            //加工端按下需要进行的操作
+            $("#jiagongduan").click(function () {
+                $(this).removeClass("noweight").addClass("weight");
+                $("#yangzhiduan").removeClass("weight");
+                $("#zhongduan").removeClass("weight");
+                $("#gongyingduan").removeClass("weight");
+                $("#ditu").css("background-image", "url(/sheep/img/ditu-tuzaiduan.jpg)")
+            });
+
+            //供应端按下需要进行的操作
+            $("#gongyingduan").click(function () {
+                $(this).removeClass("noweight").addClass("weight");
+                $("#yangzhiduan").removeClass("weight");
+                $("#zhongduan").removeClass("weight");
+                $("#jiagongduan").removeClass("weight");
+                $("#ditu").css("background-image", "url(/sheep/img/ditu-gongyingduan.jpg)")
+            });
+        });
+    </script>
+</head>
+<body>
+<!-- 头顶部部分的代码 -->
+<div style="height:11%;width:100%;">
+    <div style="float:left;width:30%;height:100%;">
+        <div style="float:left;width:100%;height:50%;">
+            <span id="showtime"  style="display: block;color:#BFBFC9;font-size:14px;margin-top:5%;margin-left:2%;"></span>
+        </div>
+        <div style="float:left;width:100%;height:50%;">
+            <input class="headactivate" type="button" id="shujuzhongxin" value="数据中心" style="color:#ffffff;font-size: 14px;width:15%;height:60%;float:left;margin-top:2%;border:0;margin-left: 2%;"/>
+            <input class="headnoactivate" type="button" id="zhinengyangzhi" value="智能养殖" style="color:#ffffff;font-size: 14px;width:15%;height:60%;float:left;margin-top:2%;border:0;"/>
+            <input class="headnoactivate" type="button" id="zhuanjiafuwu" value="专家服务" style="color:#ffffff;font-size: 14px;width:15%;height:60%;float:left;margin-top:2%;border:0;"/>
+        </div>
+    </div>
+    <div style="float:left;width:39%;height:100%;"></div>
+    <div style="float:left;width:30%;height:100%;">
+        <div style="width:100%;height:65%;">
+            <div class="ssx">
+                <div style="width:25%;height:100%;border-right:1px solid #00C6FF;float:left;"><span style="font-size: 16px;color:#DFDFE1;margin-left: 12%;">省</span></div>
+                <select style="float:left;width: 73%;height:100%;background-color: #050623;color:#ffffff;">
+                    <option value="贵州省">贵州省</option>
+                    <option value="浙江省">浙江省</option>
+                    <option value="四川省">四川省</option>
+                </select>
+            </div>
+            <div class="ssx2">
+                <div style="width:25%;height:100%;border-right:1px solid #00C6FF;float:left;"><span style="font-size: 16px;color:#DFDFE1;margin-left: 12%;">市</span></div>
+                <select style="float:left;width: 73%;height:100%;background-color: #050623;color:#ffffff;">
+                    <option value="都匀市">都匀市</option>
+                    <option value="贵阳市">贵阳市</option>
+                    <option value="安顺市">安顺市</option>
+                    <option value="遵义市">遵义市</option>
+                </select>
+            </div>
+            <div class="ssx2">
+                <div style="width:25%;height:100%;border-right:1px solid #00C6FF;float:left;"><span style="font-size: 16px;color:#DFDFE1;margin-left: 12%;">县</span></div>
+                <select style="float:left;width: 73%;height:100%;background-color: #050623;color:#ffffff;">
+                    <option value="三都县">三都县</option>
+                    <option value="清镇市">清镇市</option>
+                    <option value="花溪区">花溪区</option>
+                    <option value="小河">小河</option>
+                    <option value="六合县">六合县</option>
+                </select>
+            </div>
+        </div>
+        <div style="width:100%;height:5%;color:#EEECEF;"></div>
+        <div style="width:100%;height:30%;color:#EEECEF;">
+            <span class="top_class">查询</span>
+            <span class="top_class2">今日</span>
+            <span class="top_class2">周度</span>
+            <span class="top_class2">月度</span>
+            <span class="top_class2">季度</span>
+        </div>
+    </div>
+</div>
+<!-- 内容部分代码 -->
+<div style="height:89%;width:100%;">
+    <!-- 今日数据左侧部分 -->
+    <div class="left_cage">
+        <!-- 涨幅统计 -->
+        <div class="deal_dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02" style="overflow:hidden;border:0px;border-radius: 0px;">
+                <div style="width:100%;height:90%;">
+                    <div id="left1" style="width:100%;height:100%;"></div>
+                </div>
+                <div style="width:80%;height:10%;margin-left: 10%;">
+                    <span style="color:#C7C6D1;float:left;">同比增幅</span>
+                    <span style="color:#C7C6D1;float:right;">同比涨幅</span>
+                </div>
+            </div>
+        </div>
+        <!-- 各种存栏统计 -->
+        <div class="deal_dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:10%;margin-left:2%;">
+                    <span style="color:#00C1F8;font-size: 16px;">各品种存栏 </span>
+                    <span style="color:#C7C6D1;font-size: 14px;" id="total"></span>
+                </div>
+                <div style="height:44%;width:100%;">
+                    <div id="left2" style="width:100%;height:100%;"></div>
+            </div>
+                <div style="width:100%;height:10%;margin-left:2%;margin-top: -3%;">
+                    <span style="color:#00C1F8;font-size: 16px;" id="sale"></span>
+                </div>
+                <div style="height:32%;width:100%;">
+                    <div id="left3" style="width:100%;height:100%;"></div>
+                </div>
+                <div style="height:10%;width:95%;font-size: 15px;margin-top: -2%">
+                    <table style="width:100%;height:100%;text-align: center;color:#C7C6D1;">
+                        <tr>
+                            <td><span id="man"></span></td>
+                            <td><span id="women"></span></td>0
+                            <td><span id="saleSheep"></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 传染病统计 -->
+        <div class="deal_dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="height:10%;width:100%;">
+                    <span id="newAdd" style="color:green;font-size:16px;float:left;margin-left:20%;"></span>
+                    <span id="death" style="color:red;float:left;font-size:16px;margin-left: 20%;" ></span>
+                </div>
+                <div style="height:80%;width:100%;margin-top: 3%;">
+                    <div id="left4" style="width:100%;height:100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 今日数据中间部分 -->
+    <div class="center_cage">
+        <!-- 地图部分 -->
+        <div class="deal_dataAllBorder01_top cage_cl">
+            <div class="dataAllBorder02">
+                <div id='ditu'>
+                    <div style="height:10%;width:100%;">
+                        <div style="width:50%;height:80%;float:left;">
+                            <span style="color:#C7C6D1;font-size: 14px;margin-left: 10%;">平台用户数</span>
+                            <span style="color:#C7C6D1;font-size: 24px;margin-left: 5%;">1047</span>
+                            <span style="color:#C7C6D1;font-size: 14px;">个</span>
+                        </div>
+                        <div style="width:50%;height:80%;float:left;">
+                            <span style="color:#C7C6D1;font-size: 14px;margin-left: 25%;">平台交易额</span>
+                            <span style="color:#C7C6D1;font-size: 24px; margin-left: 5%;">535</span>
+                            <span style="color:#C7C6D1;font-size: 14px;">万元</span>
+                        </div>
+                    </div>
+                    <div style="width:70%;height:90%;float:left;">
+                        <div style="width:100%;height:75%;"></div>
+                        <div style="width:100%;height:25%;">
+                            <div style="width:78%;height:90%;float:left;">
+                                <table style="text-align: center;width:100%;height:100%;margin-left: 5%;">
+                                    <thead style="color:#EAE01C;font-size: 16px;">
+                                    <tr>
+                                        <td colspan="3"><span style="display: block;margin-top: 2%;">市场行情</span></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody style="color:#ffffff;font-size: 14px;">
+                                    <tr>
+                                        <td><span>活禽54/kg</span></td>
+                                        <td><span>鲜肉135/kg</span></td>
+                                        <td><span>努比亚</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>种羊(母)3000/只</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>&nbsp;</span></td>
+                                        <td><span>种羊(公)5000/只</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="width:30%;height:22%;float:left;margin-left:60%;z-index: 2;position: absolute;">
+                                <span style="font-size: 14px;color:#ffffff;display: block;margin-top: 25%;margin-left: 15%;">商品羊58/kg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width:30%;height:90%;float:left;">
+                        <div class="weight" id="yangzhiduan" style="width:60%;height:15%;margin-left: 25%;font-size: 16px;margin-top: 28%;">
+                            <span style="color:#6AEE02;">养殖端</span><br/>
+                            <span style="color:#6AEE02;margin-left: 17%;">56</span>
+                        </div>
+                        <div class="noweight" id="zhongduan" style="width:60%;height:15%;margin-left: 60%;font-size: 16px;margin-top: 7%;">
+                            <span style="color:#FAD700;">终端</span><br/>
+                            <span style="color:#FAD700;margin-left: 5%;">24</span>
+                        </div>
+                        <div class="noweight" id="jiagongduan" style="width:60%;height:15%;margin-left: 3%;font-size: 16px;margin-top: 0%;">
+                            <span style="color:#F60000;">屠宰加工端</span>
+                            <span style="color:#F60000;margin-left: 40%;">1</span>
+                        </div>
+                        <div class="noweight"  id="gongyingduan" style="width:60%;height:15%;margin-left: 45%;font-size: 16px;margin-top: 1%;">
+                            <span style="color:#00CCF9;">物资供应端</span>
+                            <span style="color:#00CCF9;margin-left: 40%;">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 牧场部分 -->
+        <div class="deal_dataAllBorder01_bottom cage_cl">
+            <div class="dataAllBorder02">
+                <div style="height:25%;width:97%;border-bottom: 1px solid #017EF2;margin-left: 3%;">
+                    <input class="activate" type="button" id="muchanginfo" value="养殖牧场" style="color:#ffffff;font-size: 16px;width:15%;height:60%;float:left;margin-top:4%;"/>
+                    <input class="noactivate" type="button" id="tuzaiinfo" value="屠宰加工" style="color:#ffffff;font-size: 16px;width:15%;height:60%;float:left;margin-top:4%;"/>
+                    <input class="noactivate" type="button" id="zhongduaninfo" value="终端" style="color:#ffffff;font-size: 16px;width:15%;height:60%;float:left;margin-top:4%;"/>
+                </div>
+                <div style="height:70%;width:97%;overflow-y: scroll;background-color: #182A6F;margin-top: 3%;margin-left: 3%;">
+                    <table style="text-align: center;width:100%;height:100%;color:#C7C6D1;font-size:16px;" id="muchang">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 今日数据右侧部分 -->
+    <div class="right_cage">
+        <!-- 疾病预警 -->
+        <div class="deal_dataAllBorder01_right cage_cl">
+            <div class="dataAllBorder02">
+                <div class="deal_yujing">
+                    <span style="color:#00C1F8;font-size: 16px;float:left;">疾病预警 </span>
+                    <div style="background-color: #ED1925;margin-left: 30%" class="deal_regular"></div>
+                    <span class="deal_grad">一级 </span>
+                    <div style="background-color: #FAFA02;" class="deal_regular"></div>
+                    <span class="deal_grad">二级 </span>
+                    <div style="background-color: #098CFC;" class="deal_regular"></div>
+                    <span class="deal_grad">三级 </span>
+                    <div style="background-color: #5AFE0A;" class="deal_regular"></div>
+                    <span class="deal_grad">四级 </span>
+                    <div style="clear:both;"></div>
+                </div>
+                <div style="width:100%;height:87%;margin-left:4%;;margin-top:3%;overflow: hidden;" id="yujingscroll">
+                    <table style="text-align: center;width:100%;height:100%;color:#C7C6D1;font-size: 14px;" id="yujingtable">
+                        <tbody  id="yujing" >
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 运输部分 -->
+        <div class="deal_dataAllBorder01_right cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:10%;margin-left:2%;">
+                    <span style="color:#00C1F8;font-size: 16px;float:left;">运输 </span>
+                </div>
+                <div style="width:100%;height:8%;margin-left:2%;margin-top:3%;">
+                    <table style="text-align: center;width:100%;height:100%;color:#C7C6D1;font-size: 16px;">
+                        <thead style="background-color: #004B8F;">
+                        <tr>
+                            <td style='padding-bottom: 1%;padding-top: 1%;'><span>出发地</span></td>
+                            <td style='padding-bottom: 1%;padding-top: 1%;'><span>目的地</span></td>
+                            <td style='padding-bottom: 1%;padding-top: 1%;'><span>时间</span></td>
+                            <td style='padding-bottom: 1%;padding-top: 1%;'><span>商品</span></td>
+                            <td style='padding-bottom: 1%;padding-top: 1%;'><span>数量(只)</span></td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div style="width:100%;height:79%;margin-left:2%;margin-top:3%;overflow: hidden;"id="yunshuscroll">
+                    <table style="text-align: center;width:100%;height:100%;color:#C7C6D1;font-size: 16px;"id="yunshutable">
+                        <tbody id="yunshu" style="">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 疫病检疫合格率 -->
+        <div class="deal_dataAllBorder01_right cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:10%;margin-left:2%;">
+                    <span style="color:#00C1F8;font-size: 16px;float:left;">疫病检疫合格率 </span>
+                </div>
+                <div style="height:65%;width:100%;margin-left:2px;">
+                    <div id="right1" style="height:95%;width:100%;"></div>
+                    <table style="table-layout:fixed;text-align:center;width:100%;height:10%;margin-top: 2%;margin-left: 0%;font-size: 12px;">
+                        <tr>
+                            <td><span style="width:20%;color:#C7C6D1;">小反刍</span></td>
+                            <td><span style="width:20%;color:#C7C6D1;">口蹄疫</span></td>
+                            <td><span style="width:20%;color:#C7C6D1;">布病</span></td>
+                            <td><span style="width:20%;color:#C7C6D1;">羊痘</span></td>
+                            <td><span style="width:20%;color:#C7C6D1;">其他疫病</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- 专家统计 -->
+        <div class="deal_dataAllBorder01_right cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:30%;">
+                    <div style="width:20%;height:80%;border: 1px solid #00F6F7;float:left;margin-left:5%;background-color: #1E2250;">
+                        <span style="color: #DF1927;margin-left:35%;" id="platform"></span><br/>
+                        <span style="color: #FCFBFC;margin-left:25%;">平台专家</span>
+                    </div>
+                    <div style="width:20%;height:80%;border:1px solid #00F6F7;float:left;margin-left:5%;background-color: #1E2250;">
+                        <span style="color: #EF7C39;margin-left:15%;" id="online"></span><br/>
+                        <span style="color: #FCFBFC;margin-left:20%;">在线咨询</span>
+                    </div>
+                </div>
+                <div style="width:100%;height:68%;margin-top:1%;">
+                    <div id="right3" style="width:80%;height:100%;margin-left: 10%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qmy.qmybdata.mapper.SysUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.qmy.qmybdata.entity.SysUser">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="company_id" column="company_id" jdbcType="VARCHAR"/>
+            <result property="office_id" column="office_id" jdbcType="VARCHAR"/>
+            <result property="login_name" column="login_name" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="no" column="no" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+            <result property="photo" column="photo" jdbcType="VARCHAR"/>
+            <result property="login_ip" column="login_ip" jdbcType="VARCHAR"/>
+            <result property="login_date" column="login_date" jdbcType="TIMESTAMP"/>
+            <result property="login_flag" column="login_flag" jdbcType="VARCHAR"/>
+            <result property="create_by" column="create_by" jdbcType="VARCHAR"/>
+            <result property="create_date" column="create_date" jdbcType="TIMESTAMP"/>
+            <result property="update_by" column="update_by" jdbcType="VARCHAR"/>
+            <result property="update_date" column="update_date" jdbcType="TIMESTAMP"/>
+            <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+            <result property="del_flag" column="del_flag" jdbcType="CHAR"/>
+            <result property="qrcode" column="qrcode" jdbcType="VARCHAR"/>
+            <result property="sign" column="sign" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,company_id,office_id,
+        login_name,password,no,
+        name,email,phone,
+        mobile,photo,login_ip,
+        login_date,login_flag,create_by,
+        create_date,update_by,update_date,
+        remarks,del_flag,qrcode,
+        sign
+    </sql>
+    <sql id="Base_Column_If">
+        <if test="company_id != null">
+            company_id = #{company_id,jdbcType=VARCHAR},
+        </if>
+        <if test="office_id != null">
+            office_id = #{office_id,jdbcType=VARCHAR},
+        </if>
+        <if test="login_name != null">
+            login_name = #{login_name,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+            password = #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="no != null">
+            no = #{no,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            name = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            email = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="phone != null">
+            phone = #{phone,jdbcType=VARCHAR},
+        </if>
+        <if test="mobile != null">
+            mobile = #{mobile,jdbcType=VARCHAR},
+        </if>
+        <if test="photo != null">
+            photo = #{photo,jdbcType=VARCHAR},
+        </if>
+        <if test="login_ip != null">
+            login_ip = #{login_ip,jdbcType=VARCHAR},
+        </if>
+        <if test="login_date != null">
+            login_date = #{login_date,jdbcType=TIMESTAMP},
+        </if>
+        <if test="login_flag != null">
+            login_flag = #{login_flag,jdbcType=VARCHAR},
+        </if>
+        <if test="create_by != null">
+            create_by = #{create_by,jdbcType=VARCHAR},
+        </if>
+        <if test="create_date != null">
+            create_date = #{create_date,jdbcType=TIMESTAMP},
+        </if>
+        <if test="update_by != null">
+            update_by = #{update_by,jdbcType=VARCHAR},
+        </if>
+        <if test="update_date != null">
+            update_date = #{update_date,jdbcType=TIMESTAMP},
+        </if>
+        <if test="remarks != null">
+            remarks = #{remarks,jdbcType=VARCHAR},
+        </if>
+        <if test="del_flag != null">
+            del_flag = #{del_flag,jdbcType=CHAR},
+        </if>
+        <if test="qrcode != null">
+            qrcode = #{qrcode,jdbcType=VARCHAR},
+        </if>
+        <if test="sign != null">
+            sign = #{sign,jdbcType=VARCHAR},
+        </if>
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sys_user
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+    <select id="selectByCondition" parameterType="com.qmy.qmybdata.entity.SysUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from sys_user
+        <where>
+            <include refid="Base_Column_If"></include>
+        </where>
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from sys_user
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.qmy.qmybdata.entity.SysUser" useGeneratedKeys="true">
+        insert into sys_user
+        ( id,company_id,office_id
+        ,login_name,password,no
+        ,name,email,phone
+        ,mobile,photo,login_ip
+        ,login_date,login_flag,create_by
+        ,create_date,update_by,update_date
+        ,remarks,del_flag,qrcode
+        ,sign)
+        values (#{id,jdbcType=VARCHAR},#{company_id,jdbcType=VARCHAR},#{office_id,jdbcType=VARCHAR}
+        ,#{login_name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{no,jdbcType=VARCHAR}
+        ,#{name,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR}
+        ,#{mobile,jdbcType=VARCHAR},#{photo,jdbcType=VARCHAR},#{login_ip,jdbcType=VARCHAR}
+        ,#{login_date,jdbcType=TIMESTAMP},#{login_flag,jdbcType=VARCHAR},#{create_by,jdbcType=VARCHAR}
+        ,#{create_date,jdbcType=TIMESTAMP},#{update_by,jdbcType=VARCHAR},#{update_date,jdbcType=TIMESTAMP}
+        ,#{remarks,jdbcType=VARCHAR},#{del_flag,jdbcType=CHAR},#{qrcode,jdbcType=VARCHAR}
+        ,#{sign,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.qmy.qmybdata.entity.SysUser" useGeneratedKeys="true">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="company_id != null">company_id,</if>
+                <if test="office_id != null">office_id,</if>
+                <if test="login_name != null">login_name,</if>
+                <if test="password != null">password,</if>
+                <if test="no != null">no,</if>
+                <if test="name != null">name,</if>
+                <if test="email != null">email,</if>
+                <if test="phone != null">phone,</if>
+                <if test="mobile != null">mobile,</if>
+                <if test="photo != null">photo,</if>
+                <if test="login_ip != null">login_ip,</if>
+                <if test="login_date != null">login_date,</if>
+                <if test="login_flag != null">login_flag,</if>
+                <if test="create_by != null">create_by,</if>
+                <if test="create_date != null">create_date,</if>
+                <if test="update_by != null">update_by,</if>
+                <if test="update_date != null">update_date,</if>
+                <if test="remarks != null">remarks,</if>
+                <if test="del_flag != null">del_flag,</if>
+                <if test="qrcode != null">qrcode,</if>
+                <if test="sign != null">sign,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="company_id != null">#{company_id,jdbcType=VARCHAR},</if>
+                <if test="office_id != null">#{office_id,jdbcType=VARCHAR},</if>
+                <if test="login_name != null">#{login_name,jdbcType=VARCHAR},</if>
+                <if test="password != null">#{password,jdbcType=VARCHAR},</if>
+                <if test="no != null">#{no,jdbcType=VARCHAR},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+                <if test="email != null">#{email,jdbcType=VARCHAR},</if>
+                <if test="phone != null">#{phone,jdbcType=VARCHAR},</if>
+                <if test="mobile != null">#{mobile,jdbcType=VARCHAR},</if>
+                <if test="photo != null">#{photo,jdbcType=VARCHAR},</if>
+                <if test="login_ip != null">#{login_ip,jdbcType=VARCHAR},</if>
+                <if test="login_date != null">#{login_date,jdbcType=TIMESTAMP},</if>
+                <if test="login_flag != null">#{login_flag,jdbcType=VARCHAR},</if>
+                <if test="create_by != null">#{create_by,jdbcType=VARCHAR},</if>
+                <if test="create_date != null">#{create_date,jdbcType=TIMESTAMP},</if>
+                <if test="update_by != null">#{update_by,jdbcType=VARCHAR},</if>
+                <if test="update_date != null">#{update_date,jdbcType=TIMESTAMP},</if>
+                <if test="remarks != null">#{remarks,jdbcType=VARCHAR},</if>
+                <if test="del_flag != null">#{del_flag,jdbcType=CHAR},</if>
+                <if test="qrcode != null">#{qrcode,jdbcType=VARCHAR},</if>
+                <if test="sign != null">#{sign,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.qmy.qmybdata.entity.SysUser">
+        update sys_user
+        <set>
+               <include refid="Base_Column_If"></include>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.qmy.qmybdata.entity.SysUser">
+        update sys_user
+        set 
+            company_id =  #{company_id,jdbcType=VARCHAR},
+            office_id =  #{office_id,jdbcType=VARCHAR},
+            login_name =  #{login_name,jdbcType=VARCHAR},
+            password =  #{password,jdbcType=VARCHAR},
+            no =  #{no,jdbcType=VARCHAR},
+            name =  #{name,jdbcType=VARCHAR},
+            email =  #{email,jdbcType=VARCHAR},
+            phone =  #{phone,jdbcType=VARCHAR},
+            mobile =  #{mobile,jdbcType=VARCHAR},
+            photo =  #{photo,jdbcType=VARCHAR},
+            login_ip =  #{login_ip,jdbcType=VARCHAR},
+            login_date =  #{login_date,jdbcType=TIMESTAMP},
+            login_flag =  #{login_flag,jdbcType=VARCHAR},
+            create_by =  #{create_by,jdbcType=VARCHAR},
+            create_date =  #{create_date,jdbcType=TIMESTAMP},
+            update_by =  #{update_by,jdbcType=VARCHAR},
+            update_date =  #{update_date,jdbcType=TIMESTAMP},
+            remarks =  #{remarks,jdbcType=VARCHAR},
+            del_flag =  #{del_flag,jdbcType=CHAR},
+            qrcode =  #{qrcode,jdbcType=VARCHAR},
+            sign =  #{sign,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+</mapper>

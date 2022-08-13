@@ -1,0 +1,154 @@
+body{
+    width:100%;
+    height:100%;
+    background-image: url(../img/deal_back.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;"
+}
+.top_class{
+    border-top:4px solid #1E224A;
+    border-bottom:4px solid #1E224A;
+    border-left:12px solid #1E224A;
+    border-right:12px solid #1E224A;
+    margin-left: 30%;
+    background-color: #1E224A;
+    cursor: pointer;
+}
+.top_class2{
+    border-top:4px solid #1E224A;
+    border-bottom:4px solid #1E224A;
+    border-left:12px solid #1E224A;
+    border-right:12px solid #1E224A;
+    margin-left: 3%;
+    background-color: #1E224A;
+    cursor: pointer;
+}
+.headactivate{
+    background-image: url(../img/head-activate.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border:0px;
+}
+.headnoactivate{
+    background-image: url(../img/head-noactivate.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border:0px;
+}
+.ssx{
+    width:23%;
+    height:55%;
+    float:left;
+    margin-top: 5%;
+    margin-left: 30%;
+    border:1px solid #00C6FF;
+}
+.ssx2{
+    width:22%;
+    height:55%;
+    float:left;
+    margin-top: 5%;
+    margin-left: 0.5%;
+    border:1px solid #00C6FF;
+}
+.deal_dataAllBorder01{
+    margin-bottom: 0.5%;
+    width: 100%;
+    height: 33%;
+    border-radius: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    border:0;
+    background-image: url(../img/border.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+.deal_dataAllBorder01_right{
+    margin-bottom: 0.5%;
+    width: 100%;
+    height: 24.5%;
+    border-radius: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    border:0;
+    background-image: url(../img/border.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+.activate{
+    background-image: url(../img/muchang-activate.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border:0px;
+}
+.noactivate{
+    background-image: url(../img/muchang-noact.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border:0px;
+}
+.weight{
+    font-weight: bold;
+    font-family:kaiti;
+    cursor: pointer;
+}
+.noweight{
+    font-weight:normal;
+    font-family:song;
+    cursor: pointer;
+}
+#ditu{
+    width:38%;
+    height:52.5%;
+    z-index: 1;
+    position: absolute;
+    background-image: url(../img/ditu-yangzhiduan.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.deal_dataAllBorder01_top{
+    width: 100%;
+    border-radius: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    border:0;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height:60%;
+    background-image:url(../img/border.jpg);
+    background-size: 100% 100%;
+}
+.deal_dataAllBorder01_bottom{
+    width: 100%;
+    border-radius: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    border:0;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-top: 1% !important;
+    height:38.5%;
+    background-image:url(../img/border.jpg);
+    background-size: 100% 100%;
+}
+.deal_grad{
+    color:#E5E5E7;
+    font-size: 16px;
+    float:left;
+    margin-left:1%;
+}
+.deal_regular{
+    width:3%;
+    height:100%;
+    float:left;
+    margin-left:3%;
+    margin-top:1%;
+    border-radius: 2px;
+}
+.deal_yujing{
+    width:100%;
+    height:10%;
+    margin-left:2%;
+}

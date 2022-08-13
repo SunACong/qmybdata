@@ -1,0 +1,226 @@
+.query_data_body{
+    background-image:url(../img/sy.png);
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.qdb_inner{
+    height:3%;
+    width:100%;
+    margin-top:3%;
+    margin-left:0.5%;
+}
+
+.query_showTime{
+    height:100%;
+    width:50%;
+    float: left;
+    margin-left:0%;
+}
+
+.show_local_weather{
+    font-size: 14px;
+    color: white;
+}
+.query_position{
+    float:left;
+    width:13%;
+    height:100%;
+    background-image: url(../img/sheeprb.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.query_fe{
+    width:80%;
+    height:100%;
+    border: 0px;
+    color:#00c6ff;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    background-color: #00021f;
+    margin-left: 3%;
+    padding-right: 5px;
+    background: scroll right center transparent;
+}
+.production_lrtop{
+    width:100%;
+    height:5%;
+    color:white;
+    font-size:18px;
+    font-weight: bolder;
+    text-align: center;
+}
+.production{
+    width:100%;
+    height:5%;
+    color:white;
+    font-size:16px;
+    font-weight:bolder;
+    margin-top: -1%;
+    text-align: center;
+}
+.hyperlink_01{
+    width:100%;
+    margin-left:0%;
+    background:#0A3480;
+    margin-top:6%;
+}
+.query_data02{
+    height:80%;
+    width:90%;
+    margin-top:4.5%;
+    margin-left:5%;
+    background-image:url(../img/sy2.png);
+    background-size: 100% 100%;
+}
+
+.hyperlink_content{
+    margin-left: 18%;
+    color:white;
+    font-size:20px;
+}
+.certificate1{
+    width:100%;
+    height:65%;
+}
+.certifica{
+    cursor:pointer;
+    width: 23%;
+    height: 100%;
+    margin-top:5%;
+    margin-left:1%;
+    float:left;
+    background-image:url(../img/sy3.png);
+    background-size: 100% 100%;
+}
+.cer_img{
+    width: 80%;
+    height: 90%;
+    margin-left:10%;
+    margin-top:7%
+}
+.font{
+    border:0px;
+    width:100%;
+    height:10%;
+    font-size:10px;
+    color:#00ffff;
+    margin-top: 2%;
+
+}
+.font_content{
+    width:24.5%;
+    float:left;
+    font-size:12px;
+    color:white;
+    text-align: center;
+}
+.video_display{
+    margin-top:5px;
+    margin-left:5%;
+    margin-top:2%;
+    width:90%;
+    height:88%;
+    background-image:url(../img/border.jpg);
+    background-size: 100% 100%;
+}
+.star_pic{
+    float:left;
+    width: 8%;
+    height:50%;
+    background-image:url(../img/sy13.png);
+    background-size: 100% 100%;
+}
+.data_star{
+    width:70%;
+    height:90%;
+    float: left;
+    margin-top: 5%;
+}
+
+.star_01{
+    width:100%;
+    height:20%;
+    color:white;
+    font-size:16px;
+    font-weight:bolder;
+}
+.star_02{
+    width:100%;
+    height:58%;
+    color:white;
+    font-size:16px;
+    font-weight:bolder;
+}
+#dz{
+    cursor:hand;
+    font-size:16px;
+    color:white;
+    text-align:center;
+    border-style:none;
+    height:30%;
+    width:70%;
+    background-color: #0EAE28;
+    background-repeat: no-repeat;
+    border-radius:1em;
+}
+#ts{
+    cursor:hand;
+    font-size:16px;
+    color:white;
+    text-align:center;
+    border-style:none;
+    height:30%;
+    margin-top:5%;
+    width:70%;
+    background-color: #B7710F;
+    background-repeat: no-repeat;
+    border-radius:1em;
+}
+.data_qqcode{
+    width:29%;
+    height:90%;
+    margin-top: 3%;
+    float: left;
+}
+#qqcode{
+    width: 50%;
+    height: 50%;
+    margin-left: 0%;
+    margin-top: 20%;
+}
+#zhengshu{
+    height:500px;
+    width:800px;
+    position:fixed;
+    z-index:100;
+    left:40%;
+    margin-left:-250px;
+    top:40px;
+    display:none;
+}
+#zhengshu h1.title {
+    font-size:14px;
+    margin:0px;
+    padding:0px;
+    height:30px;
+    color:#ffffff;
+}
+
+#zhengshu h1 span {
+    font-weight:normal;
+    padding:2px 5px;
+    position:relative;
+    left:750px;
+    top:6px;
+    cursor:pointer;
+}
+
+#zhengshu #content {
+    background:#ffffff;
+    height:600px;
+}
+

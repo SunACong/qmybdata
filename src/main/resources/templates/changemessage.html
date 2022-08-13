@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" style="height:100%;width:100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>mainpage</title>
+    <link href="/static/sheep/css/BigData.css" th:href="@{/sheep/css/BigData.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index.css" th:href="@{/sheep/css/index.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index01.css" th:href="@{/sheep/css/index01.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/changemessage.css" th:href="@{/sheep/css/changemessage.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/bootstrap-table.css" th:href="@{/sheep/css/bootstrap-table.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/Security_operation.css" th:href="@{/sheep/css/Security_operation.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/default.css" th:href="@{/sheep/css/default.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/style.css" th:href="@{/sheep/css/style.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/trace.css" th:href="@{/sheep/css/trace.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/dialog.css" th:href="@{/sheep/css/dialog.css}" rel="stylesheet"  />
+
+    <script src="/sheep/js/base.js" th:src="@{/sheep/js/base.js}"></script>
+    <script src="/sheep/js/jquery.js" th:src="@{/sheep/js/jquery.js}"></script>
+    <script src="/sheep/js/msg.js" th:src="@{/sheep/js/msg.js}"></script>
+    <script src="/sheep/js/time.js" th:src="@{/sheep/js/time.js}"></script>
+    <script src="/sheep/js/dialog.js" th:src="@{/sheep/js/dialog.js}"></script>
+    <script src="/sheep/js/echarts.min.js" th:src="@{/sheep/js/echarts.min.js}"></script>
+    <script src="/sheep/js/jquery-ui-1.10.0.custom.min.js" th:src="@{/sheep/js/jquery-ui-1.10.0.custom.min.js}"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5ieMMexWmzB9jivTq6oCRX9j&callback"></script>
+    <script type="text/javascript">
+        $(function(){
+            //百度地图API功能
+            //创建地图实例
+            var map = new BMap.Map("dituContent");
+            map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+            //设置地图底色,换地图主题颜色value="midnight"午夜蓝风格
+            changeMapStyle('dark');
+            $("#stylelist").change(function () {
+                changeMapStyle(this.value)
+            })
+            function changeMapStyle(style){
+                var mapStyle ={
+                    features: ["road","building","water","land"],//隐藏地图上的"poi",
+                    style : style,
+                    color: "#ff0000ff",
+                };
+                map.setMapStyle(mapStyle);
+            }
+            // 创建点坐标
+            var point = new BMap.Point(107.922555,25.779995);
+            // 初始化地图，设置中心点坐标和地图级别
+            map.centerAndZoom(point, 16);
+            var opts = {
+                type: BMAP_NAVIGATION_CONTROL_LARGE
+            }
+            map.addControl(new BMap.NavigationControl(opts));
+            var marker = new BMap.Marker(point); // 创建标注
+            map.addOverlay(marker); // 将标注添加到地图中
+            var loadCount = 1;
+            map.addEventListener("tilesloaded",function(){
+                if(loadCount == 1){
+                    map.setCenter(point);
+                }
+                loadCount = loadCount + 1;
+            });
+            //实时更新时间
+            Date.prototype.format = function(format)
+            {
+                var o = {
+                    "M+" : this.getMonth()+1,
+                    "d+" : this.getDate(),
+                    "h+" : this.getHours(),
+                    "m+" : this.getMinutes(),
+                    "s+" : this.getSeconds(),
+                    "q+" : Math.floor((this.getMonth()+3)/3),
+                    "S" : this.getMilliseconds()
+                }
+                if(/(y+)/.test(format))
+                    format=format.replace(RegExp.$1,
+                        (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+                for(var k in o)if(new RegExp("("+ k +")").test(format))
+                    format = format.replace(RegExp.$1,
+                        RegExp.$1.length==1 ? o[k] :
+                            ("00"+ o[k]).substr((""+ o[k]).length));
+                return format;
+            }
+            var d1 = new Date();
+            var day = "日一二三四五六".charAt(d1.getDay());
+            time = d1.format('yyyy-MM-dd');
+            $("#time").html(time);
+            $("#day").html("星期"+day);
+        });
+    </script>
+
+</head>
+<body>
+<div class="data_bodey">
+    <div class="" style="height:10%;width:100%;">
+        <div style="float:left;width:25%;height:100%;font-size: 14px;">
+            <table style="width: 80%;height:80%;text-align: left;margin-left: 8%;margin-top: 4%;">
+                <tr>
+                    <td><a href="#"><span style="color:#DEDFE0;">数据中心</span></a></td>
+                    <td><a href="#"><span style="color:#DEDFE0;">智能养殖</span></a></td>
+                    <td><a href="#"><span style="color:#DEDFE0;">专家服务</span></a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span style="color:#DEDFE0;font-size: 24px;" id="time">2020-6-22</span>
+                    </td>
+                    <td><span style="color:#DEDFE0;" id="day">星期一</span></td>
+                    <td><span style="color:#DEDFE0;">晴</span></td>
+                </tr>
+            </table>
+        </div>
+        <div style="float:left;width:49%;height:100%;">
+        </div>
+        <div style="float:left;width:25%;height:100%;font-size: 14px;">
+            <table style="width: 90%;height:40%;color:#DEDFE0;margin-left:12%;margin-top: 4%;text-align: right;table-layout: fixed;">
+                <tr>
+                    <td><span>今日</span></td>
+                    <td><span>周度</span></td>
+                    <td><span>月度</span></td>
+                    <td><span>季度</span></td>
+                    <td><span>年度</span></td>
+                </tr>
+            </table>
+            <table style="width: 90%;height:40%;color:#DEDFE0;margin-left:12%;text-align: right;table-layout: fixed;">
+                <tr>
+                    <td><span>总部</span></td>
+                    <td colspan="2"><span>疾病防治专家</span></td>
+                    <td><span>李四</span></td>
+                    <td><span>等级一级</span></td>
+                </tr>
+            </table>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="index_tabs" >
+        <div class="inner" style="height: 100%;">
+            <!--数据左侧-->
+            <div class="left_cage">
+                <!-- 左侧第一块 -->
+                <div class="message_data_left">
+                    <div class="" style="padding: 1.2%;overflow:hidden;width: 100%;height: 100%;">
+                        <div style="height:5%;float:left;color:#dedfe0;width:100%;margin-left: 10%;font-size: 20px">
+                            <div style="float:left;"><span>发病000例</span></div>
+                            <div style="float:left;margin-left: 20%;"><span>治愈000例</span></div>
+                        </div>
+                        <div id="illkind" style="width:90%;height:85%;margin-top: 10%;margin-left: 5%;"></div>
+                    </div>
+                </div>
+                <div class="message_data_left">
+                    <div class="" style="padding: 0.5%; overflow: hidden;width: 100%;height: 100%;">
+                        <div style="margin-left: 10%;width:100%;">
+                            <span style="color:#F0582F;font-size: 20px;">疫情预警</span>
+                        </div>
+                        <!-- 放置地图的地方 -->
+                        <div style="width:70%;height:85%;float:left;">
+                            <div id="dituContent" style="width: 100%;height: 100%;">.</div>
+                        </div>
+                        <!-- 放置相关信息的地方 -->
+                        <div style="width:28%;margin-left: 2%;font-family: 幼圆;font-size: 18px;float:left;">
+                            <div style="width:100%;"><span style="color:#F0582F;">疫情预警</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">口蹄疫 一级</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">贵州省黔南州三都县三合镇</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">李四养殖场</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">存栏230只</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">发病20只</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">治愈15只</span></div>
+                            <div style="width:100%;"><span style="color:#F0582F;">死亡5只</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="message_data_left">
+                    <div class="" style="padding: 0.5%; overflow: hidden">
+                        <div style="margin-left: 10%;height:20%;width:90%;">
+                            <span style="color:#F0582F;font-size: 20px;">防治方案</span>
+                        </div>
+                        <div id="oddcolor">
+                            <table>
+                                <tr><td><span>小反刍</span></td></tr>
+                                <tr><td><span>隔离，一天一消毒（不同类切换）</span></td></tr>
+                                <tr><td><span>病死羊无害化处理</span></td></tr>
+                                <tr><td><span>未感染羊紧急接种</span></td></tr>
+                                <tr><td><span>治疗</span></td></tr>
+                                <tr><td><span>在饮水中加入***药</span></td></tr>
+                                <tr><td><span>治疗有效</span></td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--数据中间部分-->
+            <div class="center_cage">
+                <div class="message_data_center_top">
+                    <div style="position: relative; overflow: hidden;width:100%;height:100%;">
+                        <div style="height:60%;width:100%;border: 2px solid yellow">
+                            <div style="background-color:#E6E6E6;width: 100%;height:10%;">
+                                <a href="#"><span style="margin-left: 5%;color:#0000ff;font-size:16px;">信息发布</span></a>
+                                <a href="#"><span style="margin-left: 5%;color:#0000ff;font-size:16px;">课堂直播</span></a>
+                            </div>
+                            <div style="height:90%;width: 100%;">
+                                <textarea style="width: 100%;height:100%;text-align: left;background-color:#CCCDDB;"></textarea>
+                            </div>
+                        </div>
+                        <div style="height:40%;width:100%;">
+                            <div style="background-color:#E6E6E6;width: 100%;height:16%;">
+                                <a href="#"><span style="margin-left: 5%;color:#0000ff;font-size:16px;">通讯录</span></a>
+                                <input style="margin-left: 3%;"type="button" value="AI"/>
+                                <input style="margin-left: 3%;"type="button" value="笑脸"/>
+                                <input style="margin-left: 3%;"type="button" value="保存"/>
+                                <input style="margin-left: 3%;"type="button" value="剪切"/>
+                                <input style="margin-left: 3%;"type="button" value="消息"/>
+                                <input style="margin-left: 3%;"type="button" value="处方"/>
+                                <input style="margin-left: 3%;"type="button" value="录像"/>
+                            </div>
+                            <div style="width: 100%;height:84%;">
+                                <textarea style="width: 100%;height:100%;text-align: left;background-color:#CCCDDB;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="message_data_center_bottom">
+                    <!-- 通过table形式完成 -->
+                    <table>
+                        <tr>
+                            <td><span></span></td>
+                            <td><span style="font-size: 18px;">免疫档案</span></td>
+                            <td colspan="3"><span style="margin-left: 22%;font-size: 24px;">生产档案审核</span></td>
+                            <td><span  style="font-size: 18px;">配种产子</span></td>
+                            <td><span></span></td>
+                        </tr>
+                        <tr>
+                            <td><span  style="margin-left: 5%;font-size: 18px;">系谱档案</span></td>
+                            <td><span class="good" style="margin-left: 38%">优</span></td>
+                            <td><span  style="margin-left: 5%;font-size: 18px;">驱虫档案</span></td>
+                            <td><span  style="margin-left: 5%;font-size: 18px;">消毒档案</span></td>
+                            <td><span  style="margin-left: 5%;font-size: 18px;">营养保健</span></td>
+                            <td><span class="good" style="margin-left: 38%">优</span></td>
+                            <td><span  style="margin-left: 5%;font-size: 18px;">疾病防治</span></td>
+                        </tr>
+                        <tr>
+                            <td><span></span></td>
+                            <td><span  style="font-size: 18px;">动物福利</span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span></span></td>
+                            <td><span  style="font-size: 18px;">育种选育</span></td>
+                            <td><span></span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!--数据右侧-->
+            <div class="right_cage">
+                <div class="message_data_left">
+                    <!-- 显示传染病和普通病例的数量 -->
+                    <div style="color:white;width:80%;height:30%;margin-left: 20%;">
+                        <div style="width:100%;height:45%;">
+                            <div style="width:30%;height:95%;float:left;"><span style="color:#ED1C24;font-size: 20px;">传染病</span></div>
+                            <div style="text-align:center;float:left;width:40%;height:80%;background-color:#0C276E;background-size: 100%;background-repeat: no-repeat;background-position: center;border-bottom-right-radius: 0.5em;border-top-left-radius: 0.5em;">
+                                <span style="color:#ED1C24;font-size: 38px;">0000</span>
+                                <span style="color:#ED1C24;font-size: 20px;">例</span>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                        <div style="width:100%;height:50%;">
+                            <div style="float:left;width:30%;height:95%;"><span style="color:#F7931E;font-size: 20px;">普通病</span></div>
+                            <div style="text-align:center;float:left;width:40%;height:80%;background-color:#0C276E;background-size: 100%;background-repeat: no-repeat;background-position: center;border-bottom-right-radius: 0.5em;border-top-left-radius: 0.5em;">
+                                <span style="color:#F7931E;font-size: 38px;">0000</span>
+                                <span style="color:#F7931E;font-size: 20px;">例</span>
+                            </div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <!-- 用于画图的-->
+                    <div style=";width:100%;height:70%;">
+                        <div id="yxxill"style="height: 100%;width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="message_data_left">
+                    <!-- 显示合格率 -->
+                    <div style="font-size:16px;margin-left:5%;color:#dedfe0;height:10%;width:100%;"><span>疫病检疫合格率</span></div>
+                    <!-- 合格率画图 -->
+                    <div style="width:100%;height:80%;">
+                        <div id="canwork1" style="width:100%;height:100%;margin-left:1%;"></div>
+                    </div>
+                    <!-- 谁的合格率 -->
+                    <table style="table-layout:fixed;text-align:center;width:100%;height:10%;margin-top: -5%;margin-left: 0%;font-size: 14px;">
+                        <tr>
+                            <td><span style="width:20%;color:#ffff00;">小反刍</span></td>
+                            <td><span style="width:20%;color:#ff8040;">口蹄疫</span></td>
+                            <td><span style="width:20%;color:#ff8080;">布病</span></td>
+                            <td><span style="width:20%;color:#8885fa;">羊痘</span></td>
+                            <td><span style="width:20%;color:#0080ff;">其他疫病</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="message_data_left">
+                    <!--  用于显示文字的大div -->
+                    <div class="analysis" style="margin-left:8%;margin-top: 1%;width:90%;height:30%;">
+                        <div style="width:50%;float:left;">
+                            <span style="font-size: 16px;color:#FFFFFF;">平台专家</span>
+                        </div>
+                        <div style="width:30%;float:left;background-color:#0C276E;border-bottom-right-radius: 0.5em;border-top-left-radius: 0.5em;">
+                            <span style="margin-left:5%;font-size: 24px;color:#FFFFFF;">300</span>
+                            <span style="font-size: 16px;color:#FFFFFF;">人</span>
+                        </div>
+                        <div style="width:50%;float:left;margin-top: 2%">
+                            <span style="font-size: 16px;color:#FFFFFF;">在线咨询</span>
+                        </div>
+                        <div style="margin-top:2%;width:30%;float:left;background-color:#0C276E;border-bottom-right-radius: 0.5em;border-top-left-radius: 0.5em;">
+                            <span style="margin-left:5%;font-size: 24px;color:#FFFFFF;">30000</span>
+                            <span style="font-size: 16px;color:#FFFFFF;">人次</span>
+                        </div>
+                    </div>
+                    <!-- 用于画图的DIV -->
+                    <div style="height:70%;width:98%;">
+                        <div id="expertnum"  style="width:100%;height:100%; "></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" style="height:100%;width:100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>mainpage</title>
+    <link href="/static/sheep/css/mainpage.css" th:href="@{/sheep/css/mainpage.css}" rel="stylesheet"/>
+    <script src="/sheep/js/base.js" th:src="@{/sheep/js/base.js}"></script>
+</head>
+<body>
+        <!--数据中心 -->
+        <div class="div_link" id="div-datacenter">
+            <a  href="/deal" th:href="@{/deal}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--智能生产 -->
+        <div class="div_link" id="div-mainproduct">
+            <a  href="http://qianmuyun.vip:9528" th:href="@{http://qianmuyun.vip:9528}">
+<!--            <a  location.href="http://localhost/login">-->
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--金融保险 -->
+        <div class="div_link" id="div-moneysave">
+            <a  href="/bigdata" th:href="@{/bigdata}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--智能咨询 -->
+        <div class="div_link" id="div-intelquestion">
+            <a  href="/bigdata" th:href="@{/bigdata}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--物资商城 -->
+        <div class="div_link" id="div-merialstore">
+            <a  href="/message" th:href="@{/message}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--溯源 -->
+        <div class="div_link" id="div-suyuan">
+            <a  href="/query" th:href="@{/query?eartagid=000901}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+        <!--产销服务-->
+        <div class="div_link" id="div-saleserver">
+            <a  href="/index" th:href="@{/message}">
+                <div style="height:100%;width:100%;"></div>
+            </a>
+        </div>
+
+</body>
+</html>

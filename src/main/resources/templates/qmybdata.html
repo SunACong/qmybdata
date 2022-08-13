@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" style="width:100%;height:100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>黔牧云智慧畜牧大数据平台</title>
+    <link href="/static/sheep/css/BigData.css" th:href="@{/sheep/css/BigData.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index.css" th:href="@{/sheep/css/index.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index01.css" th:href="@{/sheep/css/index01.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/qmybdata.css" th:href="@{/sheep/css/qmybdata.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/bootstrap-table.css" th:href="@{/sheep/css/bootstrap-table.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/Security_operation.css" th:href="@{/sheep/css/Security_operation.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/default.css" th:href="@{/sheep/css/default.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/style.css" th:href="@{/sheep/css/style.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/trace.css" th:href="@{/sheep/css/trace.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/dialog.css" th:href="@{/sheep/css/dialog.css}" rel="stylesheet"  />
+
+    <script src="/sheep/js/base.js" th:src="@{/sheep/js/base.js}"></script>
+    <script src="/sheep/js/jquery.js" th:src="@{/sheep/js/jquery.js}"></script>
+    <script src="/sheep/js/qmy.js" th:src="@{/sheep/js/qmy.js}"></script>
+    <script src="/sheep/js/time.js" th:src="@{/sheep/js/time.js}"></script>
+    <script src="/sheep/js/dialog.js" th:src="@{/sheep/js/dialog.js}"></script>
+    <script src="/sheep/js/echarts.min.js" th:src="@{/sheep/js/echarts.min.js}"></script>
+    <script src="/sheep/js/jquery-ui-1.10.0.custom.min.js" th:src="@{/sheep/js/jquery-ui-1.10.0.custom.min.js}"></script>
+    <!--萤石云视频播放-->
+    <script src="/video/js/ezuikit.js" th:src="@{/video/js/ezuikit.js}"></script>
+    <script src="/video/js/video.js" th:src="@{/video/js/video.js}"></script>
+</head>
+<body>
+<!-- 头顶部部分的代码 -->
+<div style="height:11%;width:100%;">
+    <div style="width:30%;height:100%;float:left;">
+        <div>
+            <span style="font-size: 10px;color: #00b5eb;">公告：2020年上半年......</span>
+        </div>
+        <div class="index_nav" style="margin-top: 4%;margin-left: -2.5%;">
+            <ul style="height: 30px; margin-bottom: 0px;">
+                <li class="l_left total_chose_fr">今日数据</li>
+            </ul>
+        </div>
+    </div>
+    <div style="width:40%;height:100%;float:left;">
+
+    </div>
+    <div style="width:30%;height:100%;float:right;">
+        <div style="float: right;">
+            <span class="showtime" style="color: #00b5eb;"></span>
+        </div>
+        <div class="" style="margin-left: 40%;margin-top: 5%;">
+            <ul style="height: 30px;">
+                <li class="" ><span>历史查询</span></li>
+            </ul>
+        </div>
+        <div class="choose_quyu">
+            <span class="" style="width:10%;float:left;margin-left: 25%;color:white;">区域：</span>
+            <div class="topregion">
+                <select style="width:80%;height:100%;border: 0px;color:#00c6ff;appearance:none;-webkit-appearance:none;-moz-appearance: none; background-color: #00021f;margin-left: 5%;padding-right: 14px;background: scroll right center transparent;" id="region">
+                    <option value="">全区</option>
+                </select>
+            </div>
+
+            <span class=""style="width:10%;float:left;margin-left: 5%;color:white;">栋号：</span>
+            <div class="topregion">
+                <select class="" style="width:80%;height:100%;border: 0px;color:#00c6ff;appearance:none;-webkit-appearance:none;-moz-appearance: none; background-color: #00021f;margin-left: 5%;padding-right: 14px;background: scroll right center transparent;" id="building">
+                    <option value="">全栋</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<div style="height:89%;width:100%;">
+    <!-- 今日数据左侧部分 -->
+    <div class="left_cage" >
+        <!-- 存栏统计 -->
+        <div class="dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:15%;">
+                    <div class="analysis">存栏统计:  </div>
+                    <div class="picture1">
+                        <div style="float:left;width:13%;height:100%;margin-left: 40%;"><span style="font-size: 16px;font-weight: 30;color:white;">总数</span></div>
+                        <div class="totalback">
+                            <span class="sheeptotal" id="sheeptotal1"></span>
+                        </div>
+                        <div class="totalback">
+                            <span class="sheeptotal" id="sheeptotal2"></span>
+                        </div>
+                        <div class="totalback">
+                            <span class="sheeptotal" id="sheeptotal3"></span>
+                        </div>
+                        <div class="totalback">
+                            <span class="sheeptotal" id="sheeptotal4"></span>
+                        </div>
+                        <div class="totalback">
+                            <span class="sheeptotal" id="sheeptotal5"></span>
+                        </div>
+                        <div style="margin-left:2%;height:100%;width:5%;float:left;"><span style="font-size: 16px;font-weight: 50;color:white;">只</span></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="width:100%;height:30%;color:#00ffff;fond-size:14px;">
+                    <div id="nhy" style="height:100%;width:100%;"></div>
+                </div>
+                <div style="width:100%;height:60%;">
+                    <div id="amountoflivestock" style="height:100%;width:100%;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 生产统计和死亡统计 -->
+        <div class="center_dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div >
+                    <div class="analysis">生产统计: </div>
+                    <div style="float:right;font-size: 14px;font-weight: 30;color:white;">单位/只 </div>
+                </div>
+                <div class="l_left" style="height:48%;width:100%;position:relative;">
+                    <div id="produce1" style="height:100%;width:40%;float:left;"></div>
+                    <div id="produce2" style="height:100%;width:60%;float:left;"></div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="width:100%;height:5%;float:left;margin-right:5px;margin-top:-3%">
+                    <span class="analysis">死亡统计: </span>
+                    <div style="float:right;margin-top: 2%;">
+                        <span style="font-size: 16px;font-weight: 30;color:white;">总数</span>
+                        <span style="font-size: 16px;font-weight: 30;color:white;" id="deathtotalnum"></span>
+                        <span style="font-size: 16px;font-weight: 30;color:white;">单位/只</span>
+                    </div>
+                </div>
+                <div style="height:51%;width:100%;">
+                    <div id="death" style="height: 100%;width:100%;margin-top:-10%"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 兽药统计 -->
+        <div class="dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div class="dataAllBorder02">
+                    <div style="height:10%;width:100%;">
+                        <div style="float:left;width:60%;">
+                            <span class="analysis">饲料兽药统计:</span>
+                            <span style="font-size: 16px;font-weight: 30;color:white;margin-left: 5%;">饲料消耗</span>
+                            <span style="font-size: 16px;font-weight: 30;color:#e15828;" id="siliao"></span>
+                            <span style="font-size: 16px;font-weight: 30;color:white;">千克</span>
+                        </div>
+                        <div style="float:right;width:40%;">
+                            <span style="margin-left: 30%;font-size: 16px;font-weight: 30;color:white;">兽药消耗</span>
+                            <span style="font-size: 16px;font-weight: 30;color:#e15828;" id="shouyao"></span>
+                            <span style="font-size: 16px;font-weight: 30;color:white;">盒</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div style="width:100%;height:95%;position:relative;">
+                        <div  id="forage" style="width:50%;height:100%;float:left;"></div>
+                        <div  id="drug" style="width:50%;height:100%;float:left;"></div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 今日数据中间部分 -->
+    <div class="center_cage" >
+        <!-- 视频部分 -->
+        <div class="centerDataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <!-- 模拟播放视频的地方 -->
+<!--                <div style="margin-top:5px;margin-left:5px;margin-bottom:5px;height:70%;">-->
+<!--                    <video autoplay="autoplay" loop="loop" class="dataAllBorder02 video_around">-->
+<!--                        <source class="video" title="主监控位" src="/static/sheep/video/test01.mp4" th:src="@{/sheep/video/test01.mp4}"/>-->
+<!--                    </video>-->
+<!--                </div>-->
+
+<!--                <div style="height:30%;width:45%;float:left;">-->
+<!--                    <video autoplay="autoplay" loop="loop" class="video_small video_around" title="循环监控01">-->
+<!--                        <source class="video" title="主监控位" src="/static/sheep/video/test01.mp4" th:src="@{/sheep/video/test01.mp4}"/>-->
+<!--                    </video>-->
+<!--                    <video autoplay="autoplay" loop="loop"  class="video_small video_around" title="循环监控02">-->
+<!--                        <source class="video" title="主监控位" src="/static/sheep/video/test01.mp4" th:src="@{/sheep/video/test01.mp4}"/>-->
+<!--                    </video>-->
+<!--                </div>-->
+                    <!-- 真实播放视频的地方 -->
+                <div style="margin-top:5px;margin-left:5px;margin-bottom:5px;height:70%;">
+                    <div id="ysopen"  title="循环监控01" class="dataAllBorder02 video_around"></div>
+                </div>
+                <div style="height:30%;width:45%;float:left;">
+                    <div id="myplay1"  title="循环监控01" class="video_small video_around"></div>
+                    <div id="myplay2"  title="循环监控01" class="video_small video_around"></div>
+                </div>
+
+
+                <div style="font-size:14px;color:white;float:left;width:55%;height:27%;margin-left: 0%;">
+                    <div style="margin_top:10%;width:100%;height:100%;">
+                        <div style="width: 33%;height:100%;float: left;">
+                            <div style="width: 100%;height:20%;background-color: #00ab32;float: left;"><span style="margin-left: 40%;">查情</span></div>
+                            <div style="float: left;width: 100%;height:80%;font-size: 14px;color:#f4f4f5;overflow-y:scroll;background-color:#182A6F; ">
+                                <ul id="cqts"style="background-color: #05061B;height:100%;width:100%;">
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="width: 66%;height:100%;float: left;margin-left: 1%;">
+                            <div style="float: left;width: 100%;height:20%;background-color: #cb5368;"><span style="margin-left: 40%;">异常</span></div>
+                            <div style="float: left;width: 100%;height:80%;font-size: 14px;color:#f4f4f5;overflow-y:scroll;background-color:#182A6F;">
+                                <ul id="ycts" style="background-color: #05061B;height:100%;width:100%;">
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                    <li class="yichang" style="cursor: pointer;"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 生产档案 -->
+        <div class="centerBottomDataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:100%;height:20%;">
+                    <span class="center_analysis1">生产档案：</span>
+                    <table style="width:100%;text-align: center;font-size: 13px;">
+                        <tr>
+                            <td><a href="#"><span class="productButton">动物福利</span></a></td>
+                            <td><a href="#"><span class="productButton">系谱档案</span></a></td>
+                            <td><a href="#"><span class="productButton">免疫档案</span></a></td>
+                            <td><a href="#"><span class="productButton">消毒档案</span></a></td>
+                            <td><a href="#"><span class="productButton">驱虫档案</span></a></td>
+                            <td><a href="#"><span class="productButton">营养保健</span></a></td>
+                            <td><a href="#"><span class="productButton">配种产仔</span></a></td>
+                            <td><a href="#"><span class="productButton">育种选育</span></a></td>
+                            <td><a href="#"><span class="productButton">疾病防治</span></a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="width:100%;height:35%;">
+                    <span class="center_analysis2">完成率：</span>
+                    <div id="myChartC21" style="height:82%;width:100%;"></div>
+                </div>
+                <div style="width:100%;height:48%;">
+                    <table style="height:100%;width:100%;color:#e9eaed;font-size: 16px;text-align: left;">
+                        <tr>
+                            <td colspan="5" style="background-color: #006cff;font-size: 14px;"><span style="margin-left: 2%;" id="tixingtime" >任务/提醒</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width:10%;"><span style="margin-left: 20%;">南区</span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">11栋</span></td>
+                            <td style="width:20%;"><span class="time4" style="margin-left: 20%;"></span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">298只</span></td>
+                            <td style="width:30%;"><span style="margin-left: 20%;">执行小羊三联四防</span></td>
+                        </tr>
+                        <tr style="background-color: #333965;">
+                            <td style="width:10%;"><span style="margin-left: 20%;">南区</span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">12栋</span></td>
+                            <td style="width:20%;"><span class="time4" style="margin-left: 20%;"></span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">310只</span></td>
+                            <td style="width:30%;"><span style="margin-left: 20%;">执行羊痘免疫接种任务</span></td>
+                        </tr>
+                        <tr>
+                            <td style="width:10%;"><span style="margin-left: 20%;">南区</span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">13栋</span></td>
+                            <td style="width:20%;"><span class="time4" style="margin-left: 20%;"></span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">290只</span></td>
+                            <td style="width:30%;"><span style="margin-left: 20%;">执行断奶任务并注意......</span></td>
+                        </tr>
+                        <tr style="background-color: #333965;">
+                            <td style="width:10%;"><span style="margin-left: 20%;">南区</span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">14栋</span></td>
+                            <td style="width:20%;"><span class="time4" style="margin-left: 20%;"></span></td>
+                            <td style="width:20%;"><span style="margin-left: 20%;">312只</span></td>
+                            <td style="width:30%;"><span style="margin-left: 20%;">执行吡硅酮驱药任务</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 今日数据右侧部分 -->
+    <div class="right_cage" >
+        <!-- 智能环控 -->
+        <div class="dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width: 100%;height:20%;">
+                    <div class="analysis">智能环控:  </div>
+                </div>
+                <div style="width: 100%;height:78%;">
+                    <div id="environment1" class="environment"></div>
+                    <div id="environment2" class="environment"></div>
+                    <div id="environment3" class="environment"></div>
+                    <div id="environment4" class="environment"></div>
+                    <div id="environment5" class="environment"></div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 疫病监测和检疫检测 -->
+        <div class="center_dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="height:6%;width:100%;">
+                    <span class="analysis">疫病监测: </span>
+                </div>
+                <div style="height:44%;width:100%;">
+                    <div id="sickmonitor" style="height:100%;width:100%;"></div>
+                </div>
+                <div style="height:6%;width:100%;">
+                    <span class="analysis">检疫检测: </span>
+                </div>
+                <div style="height:44%;width:100%;">
+                    <div id="quarantine" style="height:100%;width:100%;"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 销售统计 -->
+        <div class="dataAllBorder01 cage_cl">
+            <div class="dataAllBorder02">
+                <div style="width:60%;height:100%;float:left;">
+                    <div style="width:100%;height:25%;">
+                        <div style="float:left;width:50%;height:10%;">
+                            <span class="analysis">销售统计:  </span>>
+                        </div>
+                        <div style="float:left;font-size:14px;height:100%;width:30%;">
+                            <span style="color:#ffffff;">可出售总数</span><br>
+                            <span style="color:#e15828;font-size: 20px;" id="saletotal2" ></span>
+                            <span style="color:#ffffff;">只</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <div style="width:100%;height:75%;">
+                        <div  id="sale" style="width:100%;height:100%;"></div>
+                    </div>
+                </div>
+                <div style="width:40%;height:100%;float:left;">
+                    <div style="width:100%;height:25%;">
+                        <span style="width:20%;float:left;color:#ffffff;margin-top: 8%;margin-left: 2%;">品种:</span>
+                        <div class="special_type">
+                            <select class="st" id="sheep_special">
+                                <option value="">努比亚山羊</option>
+                            </select>
+                        </div>
+
+                        <span style="width:20%;float:left;color:#ffffff;margin-top: 8%;margin-left: 5%;">品类:</span>
+                        <div class="special_type">
+                            <select class="st" id="sheep_type">
+                                <option value="">母羊</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="width:100%;height:75%;overflow-y:scroll;background-color: #182A6F; ">
+                        <table style="text-align: center;width:100%;height:100%;table-layout: fixed;" id="earnumber">
+                            <tr style="background-color: #e15828;">
+                                <td colspan="2"><span style="color:#ffffff;font-size: 16px;">羊只编号</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 点击土壤温湿度弹出来的框框 -->
+        <div id="zzc"></div>
+        <div class="dialog dialog1">
+            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>
+            <div class="content" style="background-color: #ffffff;">
+                <table style="border-spacing:2px 2px;width:100%;height:100%;font-size: 14px;table-layout: fixed;border-collapse: separate;">
+                    <thead style="height:8%;width:100%;">
+                    <tr>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>日期</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>温度(℃)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>温度状态</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>湿度(%)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>HTI</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>湿度状态</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="wendu" style="height:92%;width:100%;">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 点击空气弹出来的框框 -->
+        <div class="dialog dialog2">
+            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>
+            <div class="content">
+                <table style="border-spacing:2px 2px;width:100%;height:100%;font-size: 14px;table-layout: fixed;border-collapse: separate;">
+                    <thead style="height:8%;width:100%;">
+                    <tr>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>日期</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>氨气(mg/m3)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>硫化氢(mg/m3)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>二氧化碳(mg/m3)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>细菌总数(万个/m3)</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>粉尘(mg/m3)</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="kongqi" style="height:92%;width:100%;"></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 点击水质弹出来的框框 -->
+        <div class="dialog dialog3">
+            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>
+            <div class="content">
+                <table style="border-spacing:2px 2px;width:100%;height:100%;font-size: 14px;table-layout: fixed;border-collapse: separate;">
+                    <thead style="height:8%;width:100%;">
+                    <tr>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>日期</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>PH</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>状态</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="shuizhi" style="height:92%;width:100%;">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 点击氮气弹出来的框框 -->
+        <div class="dialog dialog4">
+            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>
+            <div class="content">
+                <table style="border-spacing:2px 2px;width:100%;height:100%;font-size: 14px;table-layout: fixed;border-collapse: separate;">
+                    <thead style="height:8%;width:100%;">
+                    <tr>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>日期</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>浓度</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>状态</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="danqi" style="height:92%;width:100%;">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 点击土壤弹出来的框框 -->
+    <div class="dialog dialog5">
+            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>
+            <div class="content">
+                <table style="border-spacing:2px 2px;width:100%;height:100%;font-size: 14px;table-layout: fixed;border-collapse: separate;">
+                    <thead style="height:8%;width:100%;">
+                    <tr>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>日期</span></th>
+                        <th style="background-color: #030D39;color:#ffffff;"><span>PH</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="turang" style="height:92%;width:100%;">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- -------------- -->
+        <!-- 点击视频弹出来的框框 -->
+<!--        <div class="dialog">-->
+<!--            <h1 class="title_close"  style="background-color: #ffffff;"><span style="color:#000000;">关闭</span></h1>-->
+<!--            <div class="content">-->
+<!--                <video preload="metadata" controls="controls" loop="loop" class="video_around haha" title="循环监控01"  style="width:100%;height:100%;">-->
+<!--                    <source class="video" title="主监控位" src="/static/sheep/video/chanzi01.mp4" th:src="@{/sheep/video/chanzi01.mp4}"/>-->
+<!--                </video>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--        &lt;!&ndash; 点击视频弹出来的框框 &ndash;&gt;-->
+<!--        <div class="dialog">-->
+<!--            <h1 class="title_close"  style="background-color: #ffffff;"><span style="color:#000000;">关闭</span></h1>-->
+<!--            <div class="content">-->
+<!--                <video loop="loop" class="video_around" title="循环监控01"  style="width:100%;height:100%;">-->
+<!--                    <source class="video" title="主监控位" src="/static/sheep/video/chanzi02.mp4" th:src="@{/sheep/video/chanzi02.mp4}"/>-->
+<!--                </video>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--        &lt;!&ndash; 点击视频弹出来的框框 &ndash;&gt;-->
+<!--        <div class="dialog">-->
+<!--            <h1 class="title_close"><span style="color:#000000;">关闭</span></h1>-->
+<!--            <div class="content">-->
+<!--                <video  loop="loop" class="video_around" title="循环监控01"  style="width:100%;height:100%;">-->
+<!--                    <source class="video" title="主监控位" src="/static/sheep/video/chanzi03.mp4" th:src="@{/sheep/video/chanzi03.mp4}"/>-->
+<!--                </video>-->
+<!--            </div>-->
+<!--        </div>-->
+        <!-- -------------- -->
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+#oddcolor table{
+    text-align:left;
+    color:#dedfe0;
+    font-size: 16px;
+    width:100%;
+    height:100%;
+}
+#oddcolor table tr:nth-child(even){
+    width:100%;
+    height:85%;
+    background-color: #000670;
+}
+#oddcolor table td span{
+    margin-left: 15%;
+}
+.message_data{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-image: url(../img/border.jpg);
+}
+.message_data_left{
+    width: 100%;
+    height: 33%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+    background-image: url(../img/border.jpg);
+    margin-top: 1%;
+}
+.message_data_center_top{
+    width: 100%;
+    height: 74%;
+    background-image: url(../img/border.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+}
+.message_data_center_bottom{
+    margin-top: 0.6% !important;
+    height: 25%;
+    border: 3px solid #003870;
+    border-bottom-right-radius: 3em;
+    border-top-left-radius: 3em;
+    background-image: url(../img/background_com1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.message_data_center_bottom table{
+    color:#dedfe0;
+    width:100%;
+    height:100%;
+}
+.good{
+    font-family: KaiTi;
+    line-height: 1em;
+    color: #17ed1e;
+    font-weight:bold;
+    font-size: 36px;
+    text-shadow:0px 0px 0 rgb(-5,209,2),
+    -1px -1px 0 rgb(-28,186,-21),
+    -2px -2px 0 rgb(-50,164,-43),
+    -3px -3px 0 rgb(-73,141,-66),
+    -4px -4px 0 rgb(-95,119,-88),
+    -5px -5px 0 rgb(-117,97,-110),
+    -6px -6px 5px rgba(0,0,0,0.4),
+    -6px -6px 1px rgba(0,0,0,0.5),
+    0px 0px 5px rgba(0,0,0,.2);
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" style="height:100%;width:100%;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>mainpage</title>
+    <link href="/static/sheep/css/BigData.css" th:href="@{/sheep/css/BigData.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index.css" th:href="@{/sheep/css/index.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/index01.css" th:href="@{/sheep/css/index01.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/dataplatform.css" th:href="@{/sheep/css/dataplatform.css}" rel="stylesheet"/>
+    <link href="/static/sheep/css/bootstrap-table.css" th:href="@{/sheep/css/bootstrap-table.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/Security_operation.css" th:href="@{/sheep/css/Security_operation.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/default.css" th:href="@{/sheep/css/default.css}" rel="stylesheet" />
+    <link href="/static/sheep/css/style.css" th:href="@{/sheep/css/style.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/trace.css" th:href="@{/sheep/css/trace.css}" rel="stylesheet"  />
+    <link href="/static/sheep/css/dialog.css" th:href="@{/sheep/css/dialog.css}" rel="stylesheet"  />
+
+    <script src="/sheep/js/base.js" th:src="@{/sheep/js/base.js}"></script>
+    <script src="/sheep/js/jquery.js" th:src="@{/sheep/js/jquery.js}"></script>
+    <script src="/sheep/js/dataplatform.js" th:src="@{/sheep/js/dataplatform.js}"></script>
+    <script src="/sheep/js/time.js" th:src="@{/sheep/js/time.js}"></script>
+    <script src="/sheep/js/dialog.js" th:src="@{/sheep/js/dialog.js}"></script>
+    <script src="/sheep/js/echarts.min.js" th:src="@{/sheep/js/echarts.min.js}"></script>
+    <script src="/sheep/js/jquery-ui-1.10.0.custom.min.js" th:src="@{/sheep/js/jquery-ui-1.10.0.custom.min.js}"></script>
+
+</head>
+<body>
+<div class="data_bodey">
+    <!-- 顶部部分-->
+    <div style="color: white;width:100%;height:4%;">
+        <div style="width: 30%;height:40%;text-align:center;margin-top: 3%;margin-left: 3%;">
+            <span style="font-size: 20px;">专家咨询</span>
+        </div>
+    </div>
+    <div style="width: 100%;height: 90%;">
+        <!--左侧部分-->
+        <div class="platform_left_cage">
+            <!--    左上侧样式 -->
+            <div class="leftup_cage" style="width:100%;height:70%;">
+                <!-- 放专家视频的地方 -->
+                <div class="platform_dataAllBorder01">
+                    <div class="dataAllBorder02" style="position: relative;overflow: hidden;width: 100%;">
+                        <div style="width:100%; height:80%;background-color: black"></div>
+                        <div style="background-color:#E6E6E6;width: 100%;height:8%;">
+                            <input style="margin-left: 10%;"type="button" value="AI"/>
+                            <input style="margin-left: 5%;"type="button" value="笑脸"/>
+                            <input style="margin-left: 5%;"type="button" value="保存"/>
+                            <input style="margin-left: 5%;"type="button" value="剪切"/>
+                            <input style="margin-left: 5%;"type="button" value="消息"/>
+                            <input style="margin-left: 5%;"type="button" value="处方"/>
+                            <input style="margin-left: 5%;"type="button" value="录像"/>
+                        </div>
+                        <div style="background-color:#CCCDDB;width: 100%;height:42%;">
+                            <textarea style="width: 100%;height:100%;text-align: left;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--    左下侧样式 -->
+            <div class="leftdown_cage">
+                <!-- 放普通病例和传染病例的地方 -->
+                <div class="platform_dataAllBorder01">
+                    <div class="dataAllBorder02" style="position: relative;overflow: hidden;width: 100%; ">
+                        <!-- 显示传染病和普通病例的数量 -->
+                        <div style="color:white;width:30%;float:left;font-size: 20px">
+                            <div style="width:100%;height:30%;margin-top: 10%;">
+                                <div style="width:50%;height:50%;float:left;"><span style="color:#ED1C24;">传染病</span></div>
+                                <div class="desease">
+                                    <span style="color:#ED1C24;font-size: 40px">1</span>
+                                    <span style="color:#ED1C24;">例</span>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                            <div style="width:100%;height:30%;margin-top: 10%;">
+                                <div style="float:left;width:50%;height:50%;"><span style="color:#F7931E;">普通病</span></div>
+                                <div class="desease">
+                                    <span style="color:#F7931E;font-size: 40px">8</span>
+                                    <span style="color:#F7931E;">例</span>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>
+                        </div>
+                        <!-- 用于画图的-->
+                        <div style="float:left;width:70%;height:100%;">
+                            <div id="yxxill"style="height: 100%;width: 100%;margin-left: -1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分-->
+        <div class="platform_right_cage">
+            <!--    右侧上侧样式 -->
+            <div class="rightup_cage">
+                <div style="width: 49%;height: 100%;float:left;">
+                    <!-- 放平台专家的地方 -->
+                    <div class="platform_dataAllBorder01" style="margin-left: 1%;">
+                        <div class="dataAllBorder02" style="position: relative; overflow: hidden;width: 100%;">
+                            <div style="width:100%;height:10%;padding-top: 3%;">
+                                <div class="platform_analysis"><span style="font-size: 20px;">平台专家</span></div>
+                                <div class="expert_person"><span style="font-size: 20px;">15人</span></div>
+                            </div>
+                            <div style="height:85%;width: 100%">
+                                <table style="text-align:center;width:100%;color:white;height:100%;">
+                                    <tr style="weight:20%;">
+                                        <td class="expert_content"><span style="font-size: 18px;">育种选育</span></td>
+                                        <td>
+                                            <span style="font-size: 18px;width:30%;">2</span>
+                                            <span style="font-size: 18px;width:30%;" >人</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="weight:20%;">
+                                        <td class="expert_content"><span style="font-size: 18px;">营养保健</span></td>
+                                        <td>
+                                            <span style="font-size: 18px;width:30%;">2</span>
+                                            <span style="font-size: 18px;width:30%;" >人</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="weight:20%;">
+                                        <td class="expert_content"><span style="font-size: 18px;">疫病防治</span></td>
+                                        <td>
+                                            <span style="font-size: 18px;width:30%;">6</span>
+                                            <span style="font-size: 18px;width:30%;" >人</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="weight:20%;">
+                                        <td class="expert_content"><span style="font-size: 18px;">牧草种植</span></td>
+                                        <td>
+                                            <span style="font-size: 18px;width:30%;">3</span>
+                                            <span style="font-size: 18px;width:30%;" >人</span>
+                                        </td>
+                                    </tr>
+                                    <tr style="weight:20%;">
+                                        <td class="expert_content"><span style="font-size: 18px;">规划设计</span></td>
+                                        <td>
+                                            <span style="font-size: 18px;width:30%;">2</span>
+                                            <span style="font-size: 18px;width:30%;" >人</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 放课程直播的地方 -->
+                <div style="width: 49%;height: 100%;float:left;">
+                    <div class=" platform_dataAllBorder01" style="margin-left: 1%;">
+                        <div class="dataAllBorder02" style="position: relative; overflow: hidden;width: 100%;">
+                            <!-- 直播预告 -->
+                            <div style="width:100%;height:50%;">
+                                <div><span style="font-size: 20px;color:#00F7EE;">课题直播</span></div>
+                                <table class="data_zbfa">
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">断奶选育</span></td>
+                                        <td><span style="font-size: 18px;">直播时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">口蹄疫防治</span></td>
+                                        <td><span style="font-size: 18px;">直播时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">自动化羊舍设计</span></td>
+                                        <td><span style="font-size: 18px;">直播时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- 方案预告 -->
+                            <div style="width:100%;height:50%;">
+                                <div><span style="font-size: 20px;color:#00F7EE;">技术方案</span></div>
+                                <table class="data_zbfa">
+                                    <tbody>
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">种公羊营养方案</span></td>
+                                        <td><span style="font-size: 18px;">上传时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">种公羊营养方案</span></td>
+                                        <td><span style="font-size: 18px;">上传时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                    <tr style="weight:20%">
+                                        <td><span style="font-size: 18px;">种公羊营养方案</span></td>
+                                        <td><span style="font-size: 18px;">上传时间</span></td>
+                                        <td><span style="font-size: 18px;">2020:03:25 16:28</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--    右侧下侧样式 -->
+            <div class="rightdown_cage">
+                <!-- 放专家简介的地方 -->
+                <div class=" platform_dataAllBorder01" style="margin-left: 0.5%;width: 98%;">
+                    <div class="dataAllBorder02" style="position: relative; overflow: hidden;width: 100%;height:100%;">
+                        <!-- 专家简介 -->
+                        <div style="color:white;text-align:center;width:30%;float:left;height:98%;">
+                            <div style="height:15%;width: 100%;"><span style="font-size: 20px;color:#00F7EE;">专家简介</span></div>
+                            <div style="height:84%;width: 100%;">
+                                <div style="width:40%;height:100%;float: left">
+                                    <img style="width:100%;height:100%;;float: left" src="/static/sheep/img/zhuanjia.png" th:src="@{/sheep/img/zhuanjia.png}"/>
+                                </div>
+                                <div style="float: left;width:60%;height:100%;">
+                                   <span style="font-size: 14px;height:100%;">
+                                            罗齐英，兽医师。从事兽医工作三十五年，主要承担对动物疫病的监测、
+                                            检测、诊断、流行病学调查、疫情报告及动物疫病的预防、控制等工作。
+                                            主持或参加完成省、州级多个项目。
+                                            获全省“十佳动物疫病防控技术能手”；
+                                            获黔南州首届兽医实验室技能比武“二等奖”。
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 资质证书 -->
+                        <div style="color:white;text-align:center;width:30%;float:left;height:100%;margin-left: 3%;">
+                            <div style="height:15%;width: 100%;"><span style="font-size: 20px;color:#00F7EE;">资质证书</span></div>
+                            <div style="height:85%;width: 100%">
+                                <img style="height:100%;width: 50%;float: left;" src="/static/sheep/img/zhengshu1.png" th:src="@{sheep/img/zhengshu1.png}"/>
+                                <img style="height:100%;width: 50%;float: left;" src="/static/sheep/img/zhengshu2.png" th:src="@{sheep/img/zhengshu2.png}"/>
+                            </div>
+                        </div>
+
+                        <!-- 星级评价 -->
+                        <div style="color:white;text-align:center;width:30%;float:left;margin-left: 3%;height:30%;">
+                            <div id="score" style="text-align:left;height:100%;width:100%;">
+                                <div style="margin-top: 8%;float:left; width:100%;height:100%;">
+                                    <span style=" float:left;margin-right: 10%; font-size: 20px;color:#00F7EE;" >星级</span>
+                                    <div class="star_pic"></div>
+                                    <div class="star_pic"></div>
+                                    <div class="star_pic"></div>
+                                    <div class="star_pic"></div>
+                                    <div class="star_pic"></div>
+                                </div>
+                            </div>
+                            <div style="height:40%;width:100%;">
+                                <input type="button" value="点赞" id="dz"/>
+                                <input type="button" value="投诉" id="ts"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
