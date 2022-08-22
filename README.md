@@ -1,5 +1,6 @@
 # 黔牧云jquery启动教程
 
+<<<<<<< HEAD
 
 ## 后台启动
 ### 第一步修改配置文件generatorConfig.xml
@@ -33,3 +34,9 @@
 ```
 - \resources\static\sheep\js\base.js文件，baseUrl是将所有的有关ruoyi后台请求的请求域名抽取出来了
 > var baseUrl = "http://qianmuyun.vip:9528/prod-api"
+=======
+## base.js存放是新的后台的请求地址 修改前请提前修改好
+
+测试切换账户是否改变
+
+>>>>>>> 1857c59 (测试账户是否切换)
