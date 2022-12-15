@@ -40,93 +40,93 @@
     <result column="fatherid" jdbcType="VARCHAR" property="fatherid" />
   </resultMap>
   <sql id="Base_Column_List">
-    firstrecord.id, firstrecord.recorddate, firstrecord.ranch, firstrecord.eartagid,
-    firstrecord.region, firstrecord.buildingnum, firstrecord.columnnum, firstrecord.gender,
-    firstrecord.species,
-    firstrecord.type, firstrecord.stage, firstrecord.age, firstrecord.colour, firstrecord.weight,
-    firstrecord.video, firstrecord.startdate, firstrecord.enddate, firstrecord.bak1,
-    firstrecord.bak2, firstrecord.bak3, firstrecord.create_by,
-    firstrecord.create_date, firstrecord.update_by, firstrecord.update_date, firstrecord.remarks,
-    firstrecord.del_flag, sheep_genealogy.farmloc, sheep_genealogy.bornloc, sheep_genealogy.borntime,
+    sheep_firstrecord.id, sheep_firstrecord.recorddate, sheep_firstrecord.ranch, sheep_firstrecord.eartagid,
+    sheep_firstrecord.region, sheep_firstrecord.buildingnum, sheep_firstrecord.columnnum, sheep_firstrecord.gender,
+    sheep_firstrecord.species,
+    sheep_firstrecord.type, sheep_firstrecord.stage, sheep_firstrecord.age, sheep_firstrecord.colour, sheep_firstrecord.weight,
+    sheep_firstrecord.video, sheep_firstrecord.startdate, sheep_firstrecord.enddate, sheep_firstrecord.bak1,
+    sheep_firstrecord.bak2, sheep_firstrecord.bak3, sheep_firstrecord.create_by,
+    sheep_firstrecord.create_date, sheep_firstrecord.update_by, sheep_firstrecord.update_date, sheep_firstrecord.remarks,
+    sheep_firstrecord.del_flag, sheep_genealogy.farmloc, sheep_genealogy.bornloc, sheep_genealogy.borntime,
     sheep_genealogy.bornweight, sheep_genealogy.motherid, sheep_genealogy.fatherid
   </sql>
 
   <sql id="Base_Column_If">
     <trim prefix="(" suffix=")" suffixOverrides="and">
       <if test="recorddate != null">
-        firstrecord.recorddate = #{recorddate,jdbcType=TIMESTAMP} and
+        sheep_firstrecord.recorddate = #{recorddate,jdbcType=TIMESTAMP} and
       </if>
       <if test="ranch != null">
-        firstrecord.ranch = #{ranch,jdbcType=VARCHAR} and
+        sheep_firstrecord.ranch = #{ranch,jdbcType=VARCHAR} and
       </if>
       <if test="eartagid != null">
-        firstrecord.eartagid = #{eartagid,jdbcType=VARCHAR} and
+        sheep_firstrecord.eartagid = #{eartagid,jdbcType=VARCHAR} and
       </if>
       <if test="region != null">
-        firstrecord.region = #{region,jdbcType=VARCHAR} and
+        sheep_firstrecord.region = #{region,jdbcType=VARCHAR} and
       </if>
       <if test="buildingnum != null">
-        firstrecord.buildingnum = #{buildingnum,jdbcType=VARCHAR} and
+        sheep_firstrecord.buildingnum = #{buildingnum,jdbcType=VARCHAR} and
       </if>
       <if test="columnnum != null">
-        firstrecord.columnnum = #{columnnum,jdbcType=VARCHAR} and
+        sheep_firstrecord.columnnum = #{columnnum,jdbcType=VARCHAR} and
       </if>
       <if test="gender != null">
-        firstrecord.gender = #{gender,jdbcType=VARCHAR} and
+        sheep_firstrecord.gender = #{gender,jdbcType=VARCHAR} and
       </if>
       <if test="species != null">
-        firstrecord.species = #{species,jdbcType=VARCHAR} and
+        sheep_firstrecord.species = #{species,jdbcType=VARCHAR} and
       </if>
       <if test="type != null">
-        firstrecord.type = #{type,jdbcType=VARCHAR} and
+        sheep_firstrecord.type = #{type,jdbcType=VARCHAR} and
       </if>
       <if test="stage != null">
-        firstrecord.stage = #{stage,jdbcType=VARCHAR} and
+        sheep_firstrecord.stage = #{stage,jdbcType=VARCHAR} and
       </if>
       <if test="age != null">
-        firstrecord.age = #{age,jdbcType=VARCHAR} and
+        sheep_firstrecord.age = #{age,jdbcType=VARCHAR} and
       </if>
       <if test="colour != null">
-        firstrecord.colour = #{colour,jdbcType=VARCHAR} and
+        sheep_firstrecord.colour = #{colour,jdbcType=VARCHAR} and
       </if>
       <if test="weight != null">
-        firstrecord.weight = #{weight,jdbcType=VARCHAR} and
+        sheep_firstrecord.weight = #{weight,jdbcType=VARCHAR} and
       </if>
       <if test="video != null">
-        firstrecord.video = #{video,jdbcType=VARCHAR} and
+        sheep_firstrecord.video = #{video,jdbcType=VARCHAR} and
       </if>
       <if test="startdate != null">
-        firstrecord.startdate = #{startdate,jdbcType=TIMESTAMP} and
+        sheep_firstrecord.startdate = #{startdate,jdbcType=TIMESTAMP} and
       </if>
       <if test="enddate != null">
-        firstrecord.enddate = #{enddate,jdbcType=TIMESTAMP} and
+        sheep_firstrecord.enddate = #{enddate,jdbcType=TIMESTAMP} and
       </if>
       <if test="bak1 != null">
-        firstrecord.bak1 = #{bak1,jdbcType=VARCHAR} and
+        sheep_firstrecord.bak1 = #{bak1,jdbcType=VARCHAR} and
       </if>
       <if test="bak2 != null">
-        firstrecord.bak2 = #{bak2,jdbcType=VARCHAR} and
+        sheep_firstrecord.bak2 = #{bak2,jdbcType=VARCHAR} and
       </if>
       <if test="bak3 != null">
-        firstrecord.bak3 = #{bak3,jdbcType=VARCHAR} and
+        sheep_firstrecord.bak3 = #{bak3,jdbcType=VARCHAR} and
       </if>
       <if test="createBy != null">
-        firstrecord.create_by = #{createBy,jdbcType=VARCHAR} and
+        sheep_firstrecord.create_by = #{createBy,jdbcType=VARCHAR} and
       </if>
       <if test="createDate != null">
-        firstrecord.create_date = #{createDate,jdbcType=TIMESTAMP} and
+        sheep_firstrecord.create_date = #{createDate,jdbcType=TIMESTAMP} and
       </if>
       <if test="updateBy != null">
-        firstrecord.update_by = #{updateBy,jdbcType=VARCHAR} and
+        sheep_firstrecord.update_by = #{updateBy,jdbcType=VARCHAR} and
       </if>
       <if test="updateDate != null">
-        firstrecord.update_date = #{updateDate,jdbcType=TIMESTAMP} and
+        sheep_firstrecord.update_date = #{updateDate,jdbcType=TIMESTAMP} and
       </if>
       <if test="remarks != null">
-        firstrecord.remarks = #{remarks,jdbcType=VARCHAR} and
+        sheep_firstrecord.remarks = #{remarks,jdbcType=VARCHAR} and
       </if>
       <if test="delFlag != null">
-        firstrecord.del_flag = #{delFlag,jdbcType=VARCHAR} and
+        sheep_firstrecord.del_flag = #{delFlag,jdbcType=VARCHAR} and
       </if>
     </trim>
   </sql>
@@ -134,30 +134,30 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from firstrecord
+    from sheep_firstrecord
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="selectSheepByCondition" resultType="com.qmy.qmybdata.entity.SheepInfo" parameterType="com.qmy.qmybdata.entity.SheepInfo" >
     SELECT
     <include refid="Base_Column_List" />
-    FROM firstrecord LEFT JOIN sheep_genealogy
-    on firstrecord.eartagid = sheep_genealogy.eartagid
+    FROM sheep_firstrecord LEFT JOIN sheep_genealogy
+    on sheep_firstrecord.eartagid = sheep_genealogy.eartagid
     <where>
       <include refid="Base_Column_If"></include>
     </where>
   </select>
 
   <select id="listAllspecies" resultType="String">
-    SELECT distinct species FROM firstrecord
+    SELECT distinct species FROM sheep_firstrecord
   </select>
 
   <select id="listAlltype" resultType="String">
-    SELECT distinct type FROM firstrecord
+    SELECT distinct type FROM sheep_firstrecord
   </select>
 
   <select id="listEarnumByCondition" resultType="String" parameterType="com.qmy.qmybdata.entity.SheepInfo">
-    SELECT eartagid FROM firstrecord
+    SELECT eartagid FROM sheep_firstrecord
 <!--    <where>-->
 <!--      <include refid="Base_Column_If"></include>-->
 <!--    </where>-->
@@ -165,20 +165,20 @@
   </select>
 
   <select id="listAllregion" resultType="String">
-    SELECT distinct region FROM firstrecord
+    SELECT distinct region FROM sheep_firstrecord
   </select>
 
 
   <select id="listAllbuilding" resultType="String">
-    SELECT distinct buildingnum FROM firstrecord
+    SELECT distinct buildingnum FROM sheep_firstrecord
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from firstrecord
+    delete from sheep_firstrecord
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qmy.qmybdata.entity.SheepInfo">
-    insert into firstrecord (id, recorddate, ranch,
+    insert into sheep_firstrecord (id, recorddate, ranch,
       eartagid, region, buildingnum,
       columnnum, gender, species,
       type, stage, age, colour,
@@ -198,7 +198,7 @@
       #{delFlag,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qmy.qmybdata.entity.SheepInfo">
-    insert into firstrecord
+    insert into sheep_firstrecord
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -365,7 +365,7 @@
       WARNING - @mbg.generated
       This element is automatically generated by MyBatis Generator, do not modify.
     -->
-    update firstrecord
+    update sheep_firstrecord
     <set>
       <if test="recorddate != null">
         recorddate = #{recorddate,jdbcType=TIMESTAMP},
@@ -450,7 +450,7 @@
       WARNING - @mbg.generated
       This element is automatically generated by MyBatis Generator, do not modify.
     -->
-    update firstrecord
+    update sheep_firstrecord
     set recorddate = #{recorddate,jdbcType=TIMESTAMP},
       ranch = #{ranch,jdbcType=VARCHAR},
       eartagid = #{eartagid,jdbcType=VARCHAR},

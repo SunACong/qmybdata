@@ -130,6 +130,7 @@ $(function(){
                     "</td>" +
                     "</tr>"
                 );
+                console.log("earnumber: "+resData)
                 for(var i=0;i<resData.length/2;i=i+2){
                     $("#earnumber").append(
                         "<tr>" +
